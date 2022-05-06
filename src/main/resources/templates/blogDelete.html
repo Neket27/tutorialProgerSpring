@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<header th:insert="blocks/titleHeader::titleHeader"></header>
+<body>
+
+<div class="content-main-blogMain">
+    <div th:insert="blocks/header::header"></div>
+
+    <div th:each="el:${post}">
+        <h3 th:text="${el.title}"></h3>
+        <p th:text="${el.fullText}"></p>
+        <p th:text="'Просмотры '+${el.countView}"></p>
+        <a th:href="'/blog/'+${el.id}">Вернуться назад</a>
+        <form th:action="'/blog'+${el.id}+'/delete'"  method="post">
+            <button type="submit">Удалить пост</button>
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

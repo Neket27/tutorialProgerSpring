@@ -5,13 +5,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity // аннотациа, что поля будут в базе данных
 public class Post {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO) //генерация случайного id
     private Long id;
     private String title, anons, fullText;
     private int countView;
+    public Post(){}
+
+    public Post(String myTitle, String myAnons, String myFullText) {
+        this.title=myTitle;
+        this.anons=myAnons;
+        this.fullText =myFullText;
+    }
 
     public Long getId() {return id;}
     public void setId(Long id) {this.id = id;}

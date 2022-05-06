@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<header th:insert="blocks/titleHeader::titleHeader"></header>
+<body>
+
+<div class="content-main-blogAdd">
+    <div th:insert="blocks/header::header"></div>
+<div th:each="el: ${post}">
+    <form  method="post">
+        <input type="text" name="MyTitle" placeholder="Название статьи" th:value="${el.title}" class="form-blogAdd"><br><br>
+        <input type="text" name="MyAnons" placeholder="Анонс" th:value="${el.anons}"class="form-blogAdd"><br>
+        <input type="text" name="MyFullText" placeholder="Текст статьи"th:value="${el.fullText}" class="form-blogAdd"><br>
+        <button type="submit" class="btn-blogAdd">Обновить</button>
+    </form >
+</div>
+
+</div>
