@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<header th:insert="blocks/titleHeader::titleHeader"></header>
+<body>
+
+<div class="content-main-blogMain">
+    <div th:insert="blocks/header::header"></div>
+
+    <div th:each="el:${posts}">
+        <h3 th:text="${el.title}"></h3>
+        <p th:text="${el.anons}"></p>
+        <a th:href="'/blog/'+${el.id}">In detail</a>
+
+
+    </div>
+
+</div>
+
+</body>
+</html>
