@@ -43,10 +43,15 @@ public class BlogController {
     }
 
     @GetMapping("/blog/{id}")
-    public String PostInId(@PathVariable(value="id") long postId, Model model){ //@PathVariable() принимает динамический параметр
+    public String PostInId(@PathVariable(value="id")  long postId, Model model){ //@PathVariable() принимает динамический параметр
        Optional<Post> post = postRepository.findById(postId);
+        Post postVallue2 = postRepository.findById(postId).orElseThrow();
         ArrayList<Post> onePost = new ArrayList<>();
+
         post.ifPresent(onePost::add);// преобразовывает из объекта Optional в список Post
+
+        post.get().setCountView(onePost.get(0).getCountView()+1);
+        postRepository.save(post.get());
        model.addAttribute("post",onePost);
        model.addAttribute("title","Пост");
         return "blogDetail";
